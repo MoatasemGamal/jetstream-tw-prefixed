@@ -1,13 +1,18 @@
-<div class="md:col-span-1 flex justify-between">
-    <div class="px-4 sm:px-0">
-        <h3 class="text-lg font-medium text-gray-900">{{ $title }}</h3>
+{{-- Added prefixes (after md: modifier) --}}
+<div class="md:tw-col-span-1 tw-flex tw-justify-between">
+    {{-- Added prefixes (after sm: modifier) --}}
+    <div class="tw-px-4 sm:tw-px-0">
+        {{-- Added prefixes --}}
+        <h3 class="tw-text-lg tw-font-medium tw-text-gray-900">{{ $title }}</h3>
 
-        <p class="mt-1 text-sm text-gray-600">
+        {{-- Added prefixes --}}
+        <p class="tw-mt-1 tw-text-sm tw-text-gray-600">
             {{ $description }}
         </p>
     </div>
 
-    <div class="px-4 sm:px-0">
+    {{-- Added prefixes (after sm: modifier) --}}
+    <div class="tw-px-4 sm:tw-px-0">
         {{ $aside ?? '' }}
     </div>
 </div>

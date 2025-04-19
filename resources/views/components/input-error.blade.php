@@ -1,5 +1,6 @@
 @props(['for'])
 
 @error($for)
-    <p {{ $attributes->merge(['class' => 'text-sm text-red-600']) }}>{{ $message }}</p>
+    {{-- Added prefixes within merge --}}
+    <p {{ $attributes->merge(['class' => 'tw-text-sm tw-text-red-600']) }}>{{ $message }}</p>
 @enderror

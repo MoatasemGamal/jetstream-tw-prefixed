@@ -1,35 +1,48 @@
 <x-guest-layout>
+    {{-- x-authentication-card component needs its internal classes prefixed separately --}}
     <x-authentication-card>
         <x-slot name="logo">
+            {{-- x-authentication-card-logo component needs its internal classes prefixed separately --}}
             <x-authentication-card-logo />
         </x-slot>
 
         <div x-data="{ recovery: false }">
-            <div class="mb-4 text-sm text-gray-600" x-show="! recovery">
+            {{-- Added prefixes --}}
+            <div class="tw-mb-4 tw-text-sm tw-text-gray-600" x-show="! recovery">
                 {{ __('Please confirm access to your account by entering the authentication code provided by your authenticator application.') }}
             </div>
 
-            <div class="mb-4 text-sm text-gray-600" x-cloak x-show="recovery">
+            {{-- Added prefixes --}}
+            <div class="tw-mb-4 tw-text-sm tw-text-gray-600" x-cloak x-show="recovery">
                 {{ __('Please confirm access to your account by entering one of your emergency recovery codes.') }}
             </div>
 
-            <x-validation-errors class="mb-4" />
+            {{-- Added prefix to wrapper class AND x-validation-errors needs internal prefixing --}}
+            <x-validation-errors class="tw-mb-4" />
 
             <form method="POST" action="{{ route('two-factor.login') }}">
                 @csrf
 
-                <div class="mt-4" x-show="! recovery">
+                {{-- Added prefix --}}
+                <div class="tw-mt-4" x-show="! recovery">
+                    {{-- x-label component needs its internal classes prefixed separately --}}
                     <x-label for="code" value="{{ __('Code') }}" />
-                    <x-input id="code" class="block mt-1 w-full" type="text" inputmode="numeric" name="code" autofocus x-ref="code" autocomplete="one-time-code" />
+                    {{-- Added prefixes to wrapper class AND x-input needs internal prefixing --}}
+                    <x-input id="code" class="tw-block tw-mt-1 tw-w-full" type="text" inputmode="numeric" name="code" autofocus x-ref="code" autocomplete="one-time-code" />
                 </div>
 
-                <div class="mt-4" x-cloak x-show="recovery">
+                {{-- Added prefix --}}
+                <div class="tw-mt-4" x-cloak x-show="recovery">
+                    {{-- x-label component needs its internal classes prefixed separately --}}
                     <x-label for="recovery_code" value="{{ __('Recovery Code') }}" />
-                    <x-input id="recovery_code" class="block mt-1 w-full" type="text" name="recovery_code" x-ref="recovery_code" autocomplete="one-time-code" />
+                    {{-- Added prefixes to wrapper class AND x-input needs internal prefixing --}}
+                    <x-input id="recovery_code" class="tw-block tw-mt-1 tw-w-full" type="text" name="recovery_code" x-ref="recovery_code" autocomplete="one-time-code" />
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
-                    <button type="button" class="text-sm text-gray-600 hover:text-gray-900 underline cursor-pointer"
+                {{-- Added prefixes --}}
+                <div class="tw-flex tw-items-center tw-justify-end tw-mt-4">
+                    {{-- Added prefixes --}}
+                    <button type="button" class="tw-text-sm tw-text-gray-600 hover:tw-text-gray-900 tw-underline tw-cursor-pointer"
                                     x-show="! recovery"
                                     x-on:click="
                                         recovery = true;
@@ -38,7 +51,8 @@
                         {{ __('Use a recovery code') }}
                     </button>
 
-                    <button type="button" class="text-sm text-gray-600 hover:text-gray-900 underline cursor-pointer"
+                    {{-- Added prefixes --}}
+                    <button type="button" class="tw-text-sm tw-text-gray-600 hover:tw-text-gray-900 tw-underline tw-cursor-pointer"
                                     x-cloak
                                     x-show="recovery"
                                     x-on:click="
@@ -48,7 +62,8 @@
                         {{ __('Use an authentication code') }}
                     </button>
 
-                    <x-button class="ms-4">
+                    {{-- Added prefix to wrapper class AND x-button needs internal prefixing --}}
+                    <x-button class="tw-ms-4">
                         {{ __('Log in') }}
                     </x-button>
                 </div>

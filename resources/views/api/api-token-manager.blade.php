@@ -11,10 +11,10 @@
 
         <x-slot name="form">
             <!-- Token Name -->
-            <div class="col-span-6 sm:col-span-4">
+            <div class="tw-col-span-6 sm:tw-col-span-4">
                 <x-label for="name" value="{{ __('Token Name') }}" />
-                <x-input id="name" type="text" class="mt-1 block w-full" wire:model="createApiTokenForm.name" autofocus />
-                <x-input-error for="name" class="mt-2" />
+                <x-input id="name" type="text" class="tw-mt-1 tw-block tw-w-full" wire:model="createApiTokenForm.name" autofocus />
+                <x-input-error for="name" class="tw-mt-2" />
             </div>
 
             <!-- Token Permissions -->
@@ -22,9 +22,9 @@
                 <div class="col-span-6">
                     <x-label for="permissions" value="{{ __('Permissions') }}" />
 
-                    <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="tw-mt-2 tw-grid grid-cols-1 md:tw-grid-cols-2 tw-gap-4">
                         @foreach (Laravel\Jetstream\Jetstream::$permissions as $permission)
-                            <label class="flex items-center">
+                            <label class="tw-flex tw-items-center">
                                 <x-checkbox wire:model="createApiTokenForm.permissions" :value="$permission"/>
                                 <span class="ms-2 text-sm text-gray-600">{{ $permission }}</span>
                             </label>
@@ -35,7 +35,7 @@
         </x-slot>
 
         <x-slot name="actions">
-            <x-action-message class="me-3" on="created">
+            <x-action-message class="tw-me-3" on="created">
                 {{ __('Created.') }}
             </x-action-message>
 
@@ -49,7 +49,7 @@
         <x-section-border />
 
         <!-- Manage API Tokens -->
-        <div class="mt-10 sm:mt-0">
+        <div class="tw-mt-10 sm:tw-mt-0">
             <x-action-section>
                 <x-slot name="title">
                     {{ __('Manage API Tokens') }}
@@ -61,27 +61,27 @@
 
                 <!-- API Token List -->
                 <x-slot name="content">
-                    <div class="space-y-6">
+                    <div class="tw-space-y-6">
                         @foreach ($this->user->tokens->sortBy('name') as $token)
-                            <div class="flex items-center justify-between">
+                            <div class="tw-flex tw-items-center tw-justify-between">
                                 <div class="break-all">
                                     {{ $token->name }}
                                 </div>
 
-                                <div class="flex items-center ms-2">
+                                <div class="tw-flex tw-items-center tw-ms-2">
                                     @if ($token->last_used_at)
-                                        <div class="text-sm text-gray-400">
+                                        <div class="tw-text-sm tw-text-gray-400">
                                             {{ __('Last used') }} {{ $token->last_used_at->diffForHumans() }}
                                         </div>
                                     @endif
 
                                     @if (Laravel\Jetstream\Jetstream::hasPermissions())
-                                        <button class="cursor-pointer ms-6 text-sm text-gray-400 underline" wire:click="manageApiTokenPermissions({{ $token->id }})">
+                                        <button class="tw-cursor-pointer tw-ms-6 tw-text-sm tw-text-gray-400 tw-underline" wire:click="manageApiTokenPermissions({{ $token->id }})">
                                             {{ __('Permissions') }}
                                         </button>
                                     @endif
 
-                                    <button class="cursor-pointer ms-6 text-sm text-red-500" wire:click="confirmApiTokenDeletion({{ $token->id }})">
+                                    <button class="tw-cursor-pointer tw-ms-6 tw-text-sm tw-text-red-500" wire:click="confirmApiTokenDeletion({{ $token->id }})">
                                         {{ __('Delete') }}
                                     </button>
                                 </div>
@@ -105,7 +105,7 @@
             </div>
 
             <x-input x-ref="plaintextToken" type="text" readonly :value="$plainTextToken"
-                class="mt-4 bg-gray-100 px-4 py-2 rounded font-mono text-sm text-gray-500 w-full break-all"
+                class="tw-mt-4 tw-bg-gray-100 tw-px-4 tw-py-2 tw-rounded tw-font-mono tw-text-sm tw-text-gray-500 tw-w-full tw-break-all"
                 autofocus autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
                 @showing-token-modal.window="setTimeout(() => $refs.plaintextToken.select(), 250)"
             />
@@ -125,11 +125,11 @@
         </x-slot>
 
         <x-slot name="content">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-4">
                 @foreach (Laravel\Jetstream\Jetstream::$permissions as $permission)
                     <label class="flex items-center">
                         <x-checkbox wire:model="updateApiTokenForm.permissions" :value="$permission"/>
-                        <span class="ms-2 text-sm text-gray-600">{{ $permission }}</span>
+                        <span class="tw-ms-2 tw-text-sm tw-text-gray-600">{{ $permission }}</span>
                     </label>
                 @endforeach
             </div>

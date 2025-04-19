@@ -1,5 +1,8 @@
-<div class="hidden sm:block">
-    <div class="py-8">
-        <div class="border-t border-gray-200"></div>
+{{-- Added prefix to hidden, prefix after sm: modifier --}}
+<div class="tw-hidden sm:tw-block">
+    {{-- Added prefix --}}
+    <div class="tw-py-8">
+        {{-- Added prefixes --}}
+        <div class="tw-border-t tw-border-gray-200"></div>
     </div>
 </div>

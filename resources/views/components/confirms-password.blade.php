@@ -15,6 +15,7 @@
 </span>
 
 @once
+{{-- x-dialog-modal component needs its internal classes prefixed separately --}}
 <x-dialog-modal wire:model.live="confirmingPassword">
     <x-slot name="title">
         {{ $title }}
@@ -23,22 +24,27 @@
     <x-slot name="content">
         {{ $content }}
 
-        <div class="mt-4" x-data="{}" x-on:confirming-password.window="setTimeout(() => $refs.confirmable_password.focus(), 250)">
-            <x-input type="password" class="mt-1 block w-3/4" placeholder="{{ __('Password') }}" autocomplete="current-password"
+        {{-- Added prefix --}}
+        <div class="tw-mt-4" x-data="{}" x-on:confirming-password.window="setTimeout(() => $refs.confirmable_password.focus(), 250)">
+            {{-- Added prefixes to wrapper class AND x-input needs internal prefixing --}}
+            <x-input type="password" class="tw-mt-1 tw-block tw-w-3/4" placeholder="{{ __('Password') }}" autocomplete="current-password"
                         x-ref="confirmable_password"
                         wire:model="confirmablePassword"
                         wire:keydown.enter="confirmPassword" />
 
-            <x-input-error for="confirmable_password" class="mt-2" />
+            {{-- Added prefix to wrapper class AND x-input-error needs internal prefixing --}}
+            <x-input-error for="confirmable_password" class="tw-mt-2" />
         </div>
     </x-slot>
 
     <x-slot name="footer">
+        {{-- x-secondary-button component needs its internal classes prefixed separately --}}
         <x-secondary-button wire:click="stopConfirmingPassword" wire:loading.attr="disabled">
             {{ __('Cancel') }}
         </x-secondary-button>
 
-        <x-button class="ms-3" dusk="confirm-password-button" wire:click="confirmPassword" wire:loading.attr="disabled">
+        {{-- Added prefix to wrapper class AND x-button needs internal prefixing --}}
+        <x-button class="tw-ms-3" dusk="confirm-password-button" wire:click="confirmPassword" wire:loading.attr="disabled">
             {{ $button }}
         </x-button>
     </x-slot>

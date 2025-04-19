@@ -1,25 +1,33 @@
 <x-guest-layout>
+    {{-- x-authentication-card component needs its internal classes prefixed separately --}}
     <x-authentication-card>
         <x-slot name="logo">
+            {{-- x-authentication-card-logo component needs its internal classes prefixed separately --}}
             <x-authentication-card-logo />
         </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
+        {{-- Added prefixes --}}
+        <div class="tw-mb-4 tw-text-sm tw-text-gray-600">
             {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
         </div>
 
-        <x-validation-errors class="mb-4" />
+        {{-- Added prefix to wrapper class AND x-validation-errors needs internal prefixing --}}
+        <x-validation-errors class="tw-mb-4" />
 
         <form method="POST" action="{{ route('password.confirm') }}">
             @csrf
 
             <div>
+                {{-- x-label component needs its internal classes prefixed separately --}}
                 <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" autofocus />
+                {{-- Added prefixes to wrapper class AND x-input needs internal prefixing --}}
+                <x-input id="password" class="tw-block tw-mt-1 tw-w-full" type="password" name="password" required autocomplete="current-password" autofocus />
             </div>
 
-            <div class="flex justify-end mt-4">
-                <x-button class="ms-4">
+            {{-- Added prefixes --}}
+            <div class="tw-flex tw-justify-end tw-mt-4">
+                {{-- Added prefix to wrapper class AND x-button needs internal prefixing --}}
+                <x-button class="tw-ms-4">
                     {{ __('Confirm') }}
                 </x-button>
             </div>

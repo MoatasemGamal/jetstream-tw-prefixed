@@ -18,7 +18,8 @@
         @livewireStyles
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+        {{-- Added prefixes --}}
+        <div class="tw-font-sans tw-text-gray-900 tw-antialiased">
             {{ $slot }}
         </div>
 
